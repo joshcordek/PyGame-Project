@@ -53,12 +53,17 @@ class AlienInvasion:
         print(len(self.bullets))
         self._update_screen()
 
+        #Redraw the screen during each pass through the loop.
+        self.screen.fill(self.bg_color)
+
         #Check for any bullets that have hit aliens
         #If so, get rid of the bullet and the alien
         collisions = pygame.sprite.groupcollide(self.bullets, self.aliens, True, True)
-            
-        #Redraw the screen during each pass through the loop.
-        self.screen.fill(self.bg_color)
+        
+        if not self.aliens:
+            #Destroy existing bullets and create new fleet
+            self.bullets.empty()
+            self._create_fleet()
            
 
     def _check_events(self):
@@ -153,11 +158,6 @@ class AlienInvasion:
             alien.rect.y += self.settings.fleet_drop_speed
         self.settings.fleet_direction *= -1
 
-
-if __name__ == 'main':
-    #Make a game instance, and run the game.
-    ai = AlienInvasion()
-    ai.run_game()
 
 if __name__ == 'main':
     #Make a game instance, and run the game.
