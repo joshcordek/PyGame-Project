@@ -1,14 +1,21 @@
 import sys
+
 from time import sleep
 
 import pygame
 
 from settings import Settings
+
 from game_stats import GameStats
+
 from scoreboard import Scoreboard
+
 from button import Button
+
 from ship import Ship
+
 from bullet import Bullet
+
 from alien import Alien
 
 
@@ -250,7 +257,6 @@ class AlienInvasion:
             self.play_button.draw_button()
 
         pygame.display.flip()
-
 
 if __name__ == '__main__':
     # Make a game instance, and run the game.
